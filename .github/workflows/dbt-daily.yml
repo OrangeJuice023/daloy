@@ -1,0 +1,48 @@
+name: dbt build (daily)
+
+on:
+  schedule:
+    # Hubble refreshes daily ~07:00 PST (15:00 UTC); build after it lands
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+
+jobs:
+  dbt-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dbt
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Write CI profile
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        run: |
+          echo "$GCP_SA_KEY" > /tmp/keyfile.json
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          daloy:
+            target: ci
+            outputs:
+              ci:
+                type: bigquery
+                method: service-account
+                keyfile: /tmp/keyfile.json
+                project: $GCP_PROJECT_ID
+                dataset: daloy
+                location: US
+                threads: 2
+                maximum_bytes_billed: 20000000000
+          EOF
+
+      - name: dbt build
+        run: |
+          pip install dbt-bigquery
+          dbt deps
+          dbt build

@@ -1,0 +1,24 @@
+name: daloy
+version: "1.0.0"
+profile: daloy
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+vars:
+  # Sliding window keeps Hubble scans inside the 1 TB/month Sandbox quota
+  lookback_days: 30
+  # Circle's USDC issuer on Stellar — verify on stellar.expert before demo day
+  usdc_issuer: "GA5ZSEJYB37JRC5AVCIA5MOP4RHTM335X2KGX3IHOJAPP5RE34K4KZVN"
+
+models:
+  daloy:
+    # BigQuery Sandbox does not support DML (MERGE/INSERT), so no incremental
+    # materializations. Full-refresh tables over a bounded window instead.
+    staging:
+      +materialized: table
+      +schema: staging
+    marts:
+      +materialized: table
+      +schema: marts

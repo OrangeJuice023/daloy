@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_stellar__usdc_payments
+    description: Successful USDC payments and path payments, last {{ var('lookback_days') }} days.
+    columns:
+      - name: operation_id
+        tests: [unique, not_null]
+      - name: amount
+        tests: [not_null]
+
+  - name: stg_market__stablecoin_prices
+    description: Deduplicated hourly price snapshots (one row per coin per hour).
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns: [coin_id, vs_currency, snapshot_hour]
+    columns:
+      - name: price
+        tests: [not_null]
+
+  - name: fct_usdc_flows_daily
+    description: Daily USDC flow aggregates. Grain = one row per payment_date.
+    columns:
+      - name: payment_date
+        tests: [unique, not_null]
+
+  - name: fct_depeg_monitor
+    description: Hourly peg health with depeg and z-score anomaly flags.
+    columns:
+      - name: snapshot_hour
+        tests: [not_null]

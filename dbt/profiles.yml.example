@@ -1,0 +1,16 @@
+# Copy to ~/.dbt/profiles.yml (or keep here and set DBT_PROFILES_DIR=./dbt)
+# Local dev: `gcloud auth application-default login`, then method: oauth works.
+# CI: the GitHub Actions workflow injects a service-account keyfile instead.
+
+daloy:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: YOUR_SANDBOX_PROJECT_ID   # <-- replace
+      dataset: daloy
+      location: US                        # Hubble lives in US multi-region
+      threads: 2
+      priority: interactive
+      maximum_bytes_billed: 20000000000   # 20 GB guardrail per query — protects the 1 TB/mo quota

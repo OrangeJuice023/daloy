@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: hubble
+    description: >
+      SDF-maintained public Stellar dataset (bronze layer, updated daily).
+      We never pay storage for this — only query bytes scanned.
+    database: crypto-stellar
+    schema: crypto_stellar
+    tables:
+      - name: enriched_history_operations
+        description: All Stellar operations joined with transaction + ledger context.
+
+  - name: raw_market
+    description: Landing dataset for CoinGecko price snapshots (loaded hourly via GitHub Actions).
+    schema: raw_market
+    tables:
+      - name: stablecoin_prices
