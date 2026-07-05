@@ -7,3 +7,4 @@ logs/
 profiles.yml
 *.json
 !package.json
+gcloud auth application-default login/

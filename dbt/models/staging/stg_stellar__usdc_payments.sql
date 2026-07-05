@@ -4,7 +4,7 @@
 -- Op types: 1 = payment, 2 = path_payment_strict_receive, 13 = path_payment_strict_send.
 
 select
-    id                        as operation_id,
+    op_id                        as operation_id,
     transaction_hash,
     ledger_sequence,
     closed_at,
@@ -16,7 +16,7 @@ select
     asset_code,
     asset_issuer
 from {{ source('hubble', 'enriched_history_operations') }}
-where batch_run_date >= timestamp_sub(current_timestamp(), interval {{ var('lookback_days') }} day)
+where batch_run_date >= datetime_sub(current_datetime(), interval {{ var('lookback_days') }} day)
   and closed_at      >= timestamp_sub(current_timestamp(), interval {{ var('lookback_days') }} day)
   and type in (1, 2, 13)
   and asset_code = 'USDC'

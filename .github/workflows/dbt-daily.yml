@@ -38,7 +38,7 @@ jobs:
                 dataset: daloy
                 location: US
                 threads: 2
-                maximum_bytes_billed: 20000000000
+                maximum_bytes_billed: 40000000000
           EOF
 
       - name: dbt build
