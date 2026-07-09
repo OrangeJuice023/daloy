@@ -10,8 +10,10 @@ the rails Filipino families depend on. It tracks USDC flow volume, path payments
 health, all through a production-grade data pipeline built entirely on free tiers
 from the Philippines.
 
-**Live dashboard:** https://datastudio.google.com/reporting/29448951-f395-4ed1-954c-1a801ff0a412
-**Smart contract (Stellar testnet):** <!-- TODO: paste deployed contract address here before submission -->
+**Live dashboard:** https://datastudio.google.com/u/0/reporting/29448951-f395-4ed1-954c-1a801ff0a412/page/p_m2ctoye94d/edit
+
+**Smart contract (Stellar testnet):** `CCQR6OJVMRLKAT7SMBJK2ZGYGWXLJNO2RIYOP3XEKI2EK45Y26TP3T3M`
+[View on stellar.expert →](https://stellar.expert/explorer/testnet/contract/CCQR6OJVMRLKAT7SMBJK2ZGYGWXLJNO2RIYOP3XEKI2EK45Y26TP3T3M)
 
 ---
 
@@ -123,9 +125,12 @@ economic significance is noise.
   i.e. the actual remittance mechanism where one asset converts to another
   mid-flight via Stellar's DEX.
 - **USDC on Stellar** — Circle's verified issuer, tracked for flow and peg health.
-- **Soroban attestation contract** — publishes verifiable daily flow-health
-  summaries on-chain, making Daloy's output composable by other builders.
-  <!-- TODO: expand once contract is deployed -->
+- **Soroban attestation contract** (deployed to testnet:
+  `CCQR6OJVMRLKAT7SMBJK2ZGYGWXLJNO2RIYOP3XEKI2EK45Y26TP3T3M`) — publishes daily
+  flow-health records on-chain so anyone can independently verify Daloy's numbers.
+  Functions: `attest` (admin-only), `get_attestation` (public read), `initialize`.
+  Live example — Daloy's real Jul 5 data, written to and read back from Stellar:
+  `{ "date": 20260705, "usdc_volume": 7129264, "payment_count": 48542, "is_healthy": true }`
 
 ## Stack
 
