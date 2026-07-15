@@ -12,9 +12,10 @@ from the Philippines.
 
 **Live dashboard:** https://datastudio.google.com/u/0/reporting/29448951-f395-4ed1-954c-1a801ff0a412/page/p_m2ctoye94d/edit
 
-**Smart contract (Stellar testnet):** `CCQR6OJVMRLKAT7SMBJK2ZGYGWXLJNO2RIYOP3XEKI2EK45Y26TP3T3M`
-[View on stellar.expert →](https://stellar.expert/explorer/testnet/contract/CCQR6OJVMRLKAT7SMBJK2ZGYGWXLJNO2RIYOP3XEKI2EK45Y26TP3T3M)
+**Smart contract (Stellar MAINNET):** `CCEW4ZVI6FYRN7FOFMZUR7O4OHZ3HPO3Q4IVMG27WA3EPWMABEPFLROH`
+[View on stellar.expert →](https://stellar.expert/explorer/public/contract/CCEW4ZVI6FYRN7FOFMZUR7O4OHZ3HPO3Q4IVMG27WA3EPWMABEPFLROH)
 
+**Deployer wallet:** `GDRVX26UE2SEY733E4PKBPOSKTCN7EJKGTNV6XX6BFB6UDLFOIQFVN44`
 ---
 
 ## The problem
