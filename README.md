@@ -10,7 +10,7 @@ the rails Filipino families depend on. It tracks USDC flow volume, path payments
 health, all through a production-grade data pipeline built entirely on free tiers
 from the Philippines.
 
-**Live dashboard:** https://datastudio.google.com/u/0/reporting/29448951-f395-4ed1-954c-1a801ff0a412/page/p_m2ctoye94d/edit
+**Live dashboard:** https://datastudio.google.com/reporting/29448951-f395-4ed1-954c-1a801ff0a412
 
 **Smart contract (Stellar MAINNET):** `CCEW4ZVI6FYRN7FOFMZUR7O4OHZ3HPO3Q4IVMG27WA3EPWMABEPFLROH`
 [View on stellar.expert →](https://stellar.expert/explorer/public/contract/CCEW4ZVI6FYRN7FOFMZUR7O4OHZ3HPO3Q4IVMG27WA3EPWMABEPFLROH)
